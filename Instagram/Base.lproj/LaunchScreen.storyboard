@@ -15,19 +15,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon-60" translatesAutoresizingMaskIntoConstraints="NO" id="toa-mm-7L2">
-                                <rect key="frame" x="163" y="349" width="88" height="88"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon-60" translatesAutoresizingMaskIntoConstraints="NO" id="toa-mm-7L2">
+                                <rect key="frame" x="177" y="396" width="60" height="60"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Instagram" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RNP-yF-4RP">
-                                <rect key="frame" x="124" y="454" width="166" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagram" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RNP-yF-4RP">
+                                <rect key="frame" x="124" y="475" width="166" height="47"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="39"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="toa-mm-7L2" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-22" id="Lur-L0-U4i"/>
+                            <constraint firstItem="RNP-yF-4RP" firstAttribute="top" secondItem="toa-mm-7L2" secondAttribute="bottom" constant="19" id="azk-H2-Lbc"/>
+                            <constraint firstItem="RNP-yF-4RP" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="iMv-jL-ycI"/>
+                            <constraint firstItem="toa-mm-7L2" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ue9-OO-2rP"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
