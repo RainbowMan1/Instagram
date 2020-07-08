@@ -7,8 +7,10 @@
 //
 
 #import "HomeViewController.h"
+#import "Parse/Parse.h"
+#import "SceneDelegate.h"
 
-@interface HomeViewController ()<UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface HomeViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @end
 
@@ -37,6 +39,30 @@
     return 0;
 }
 
+- (IBAction)logOutPressed:(id)sender {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Are you Sure?"
+                                                                       message:@"Do you want to log out?"
+                                                                preferredStyle:(UIAlertControllerStyleActionSheet)];
+        UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"Log Out"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+            [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {}];
+            
+             SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            UIViewController *loginNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+            sceneDelegate.window.rootViewController = loginNavigationController;
+        }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"No"
+      style:UIAlertActionStyleCancel
+                                                         handler:^(UIAlertAction * _Nonnull action) {}];
+    
+    [yesAction setValue:[UIColor redColor] forKey:@"titleTextColor"];
+        
+        [alert addAction:cancelAction];
+    [alert addAction:yesAction];
+        [self presentViewController:alert animated:YES completion:^{}];
+}
 
 
 @end

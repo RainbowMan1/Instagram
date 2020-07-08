@@ -10,7 +10,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -75,6 +75,11 @@
                         <viewLayoutGuide key="safeArea" id="sKu-4j-d0G"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="NeO-gg-gDV">
+                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="laL-J7-WIn">
+                            <connections>
+                                <action selector="logOutPressed:" destination="oXO-tj-qTe" id="CP6-4N-bAs"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="insta_camera_btn" id="oNg-ET-HaG">
                             <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
