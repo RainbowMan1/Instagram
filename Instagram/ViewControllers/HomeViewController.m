@@ -9,16 +9,25 @@
 #import "HomeViewController.h"
 #import "Parse/Parse.h"
 #import "SceneDelegate.h"
+#import "PostCell.h"
+#import "Post.h"
+
 
 @interface HomeViewController ()<UITableViewDataSource, UITableViewDelegate>
-
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray *postArray;
 @end
 
 @implementation HomeViewController
 
+static NSInteger const maxPosts = 20;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self.tableView setDelegate:self];
+    [self.tableView setDataSource:self];
+    [self fetchPosts];
+    //self.tableView.rowHeight = 300;
 }
 
 /*
@@ -31,12 +40,33 @@
 }
 */
 
+-(void)fetchPosts {
+    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+    [query orderByDescending:@"createdAt"];
+    [query includeKey:@"author"];
+    query.limit=maxPosts;
+        // fetch data asynchronously
+        [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+            if (posts != nil) {
+                self.postArray = posts;
+                [self.tableView reloadData];
+                //SLog(@"%@",posts);
+            } else {
+                NSLog(@"%@", error.localizedDescription);
+            }
+        }];
+}
+
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    return [[UITableViewCell alloc]init];
+    PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
+    Post *post = self.postArray[indexPath.row];
+    [cell setPost:post];
+    NSLog(@"%@", cell.postCaption.text);
+    return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return (self.postArray.count<maxPosts)? self.postArray.count:maxPosts;
 }
 
 - (IBAction)logOutPressed:(id)sender {
@@ -63,6 +93,7 @@
     [alert addAction:yesAction];
         [self presentViewController:alert animated:YES completion:^{}];
 }
+
 
 
 @end

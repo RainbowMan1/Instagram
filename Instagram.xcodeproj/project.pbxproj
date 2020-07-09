@@ -11,7 +11,7 @@
 		302921FBA579CFEF733D7EF7 /* Pods_Instagram_InstagramUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D5CD243F509A982F5819895 /* Pods_Instagram_InstagramUITests.framework */; };
 		8970B931C7E669ED6EE6CC05 /* Pods_InstagramTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD3CB0C8867971C30EF04AAB /* Pods_InstagramTests.framework */; };
 		DB49CB2724B51D5B0087A535 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB49CB2624B51D5B0087A535 /* HomeViewController.m */; };
-		DB49CB2A24B51F7C0087A535 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB49CB2924B51F7C0087A535 /* CameraViewController.m */; };
+		DB49CB2A24B51F7C0087A535 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB49CB2924B51F7C0087A535 /* ComposeViewController.m */; };
 		DB635DBC24B3DAC200BA3EA9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DB635DBB24B3DAC200BA3EA9 /* AppDelegate.m */; };
 		DB635DBF24B3DAC200BA3EA9 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DB635DBE24B3DAC200BA3EA9 /* SceneDelegate.m */; };
 		DB635DC224B3DAC200BA3EA9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB635DC124B3DAC200BA3EA9 /* LoginViewController.m */; };
@@ -24,7 +24,11 @@
 		DB635DF024B3DB6F00BA3EA9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DB635DEF24B3DB6F00BA3EA9 /* README.md */; };
 		DB635DF224B3DBA400BA3EA9 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = DB635DF124B3DBA400BA3EA9 /* .gitignore */; };
 		DB635DF424B3DBB800BA3EA9 /* .gitattributes in Resources */ = {isa = PBXBuildFile; fileRef = DB635DF324B3DBB800BA3EA9 /* .gitattributes */; };
+		DB63810E24B79541004DBA33 /* DetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB63810D24B79541004DBA33 /* DetailCell.m */; };
+		DB63811124B79553004DBA33 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB63811024B79553004DBA33 /* CommentCell.m */; };
 		DB8A2E2324B568BD009C3A7E /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8A2E2224B568BD009C3A7E /* Post.m */; };
+		DB8A2E2724B575E6009C3A7E /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8A2E2624B575E6009C3A7E /* PostCell.m */; };
+		DBA6910024B6762F00D20CDF /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA690FF24B6762F00D20CDF /* DetailsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,8 +59,8 @@
 		D38FCD77DEABEA981CA213C9 /* Pods-Instagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram.release.xcconfig"; path = "Target Support Files/Pods-Instagram/Pods-Instagram.release.xcconfig"; sourceTree = "<group>"; };
 		DB49CB2524B51D5B0087A535 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		DB49CB2624B51D5B0087A535 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		DB49CB2824B51F7C0087A535 /* CameraViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
-		DB49CB2924B51F7C0087A535 /* CameraViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
+		DB49CB2824B51F7C0087A535 /* ComposeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
+		DB49CB2924B51F7C0087A535 /* ComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
 		DB635DB724B3DAC200BA3EA9 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB635DBA24B3DAC200BA3EA9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DB635DBB24B3DAC200BA3EA9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -78,8 +82,16 @@
 		DB635DEF24B3DB6F00BA3EA9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DB635DF124B3DBA400BA3EA9 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		DB635DF324B3DBB800BA3EA9 /* .gitattributes */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
+		DB63810C24B79541004DBA33 /* DetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailCell.h; sourceTree = "<group>"; };
+		DB63810D24B79541004DBA33 /* DetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailCell.m; sourceTree = "<group>"; };
+		DB63810F24B79553004DBA33 /* CommentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
+		DB63811024B79553004DBA33 /* CommentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
 		DB8A2E2224B568BD009C3A7E /* Post.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 		DB8A2E2424B56902009C3A7E /* Post.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
+		DB8A2E2524B575E6009C3A7E /* PostCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostCell.h; sourceTree = "<group>"; };
+		DB8A2E2624B575E6009C3A7E /* PostCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostCell.m; sourceTree = "<group>"; };
+		DBA690FE24B6762F00D20CDF /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
+		DBA690FF24B6762F00D20CDF /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		FD3CB0C8867971C30EF04AAB /* Pods_InstagramTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstagramTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -118,8 +130,10 @@
 				DB635DC124B3DAC200BA3EA9 /* LoginViewController.m */,
 				DB49CB2524B51D5B0087A535 /* HomeViewController.h */,
 				DB49CB2624B51D5B0087A535 /* HomeViewController.m */,
-				DB49CB2824B51F7C0087A535 /* CameraViewController.h */,
-				DB49CB2924B51F7C0087A535 /* CameraViewController.m */,
+				DB49CB2824B51F7C0087A535 /* ComposeViewController.h */,
+				DB49CB2924B51F7C0087A535 /* ComposeViewController.m */,
+				DBA690FE24B6762F00D20CDF /* DetailsViewController.h */,
+				DBA690FF24B6762F00D20CDF /* DetailsViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -136,6 +150,12 @@
 		DB49CB2124B4FF400087A535 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DB8A2E2524B575E6009C3A7E /* PostCell.h */,
+				DB8A2E2624B575E6009C3A7E /* PostCell.m */,
+				DB63810C24B79541004DBA33 /* DetailCell.h */,
+				DB63810D24B79541004DBA33 /* DetailCell.m */,
+				DB63810F24B79553004DBA33 /* CommentCell.h */,
+				DB63811024B79553004DBA33 /* CommentCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -466,11 +486,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB63811124B79553004DBA33 /* CommentCell.m in Sources */,
 				DB635DC224B3DAC200BA3EA9 /* LoginViewController.m in Sources */,
 				DB635DBC24B3DAC200BA3EA9 /* AppDelegate.m in Sources */,
 				DB635DCD24B3DAC400BA3EA9 /* main.m in Sources */,
-				DB49CB2A24B51F7C0087A535 /* CameraViewController.m in Sources */,
+				DB8A2E2724B575E6009C3A7E /* PostCell.m in Sources */,
+				DB49CB2A24B51F7C0087A535 /* ComposeViewController.m in Sources */,
 				DB49CB2724B51D5B0087A535 /* HomeViewController.m in Sources */,
+				DB63810E24B79541004DBA33 /* DetailCell.m in Sources */,
+				DBA6910024B6762F00D20CDF /* DetailsViewController.m in Sources */,
 				DB635DBF24B3DAC200BA3EA9 /* SceneDelegate.m in Sources */,
 				DB8A2E2324B568BD009C3A7E /* Post.m in Sources */,
 			);
