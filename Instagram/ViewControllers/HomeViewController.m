@@ -16,6 +16,7 @@
 @interface HomeViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *postArray;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 @end
 
 @implementation HomeViewController
@@ -27,6 +28,10 @@ static NSInteger const maxPosts = 20;
     [self.tableView setDelegate:self];
     [self.tableView setDataSource:self];
     [self fetchPosts];
+    self.refreshControl =[[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
+    
     //self.tableView.rowHeight = 300;
 }
 
@@ -50,6 +55,7 @@ static NSInteger const maxPosts = 20;
             if (posts != nil) {
                 self.postArray = posts;
                 [self.tableView reloadData];
+                [self.refreshControl endRefreshing];
                 //SLog(@"%@",posts);
             } else {
                 NSLog(@"%@", error.localizedDescription);
