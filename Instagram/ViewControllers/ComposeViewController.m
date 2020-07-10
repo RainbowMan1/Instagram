@@ -14,7 +14,7 @@
 
 @interface ComposeViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *captionField;
-
+@property (weak, nonatomic) IBOutlet UIImageView *previewImage;
 @end
 
 @implementation ComposeViewController
@@ -24,15 +24,27 @@
     // Do any additional setup after loading the view.
         
 }
+- (IBAction)closeView:(id)sender {
+    [self dismissViewControllerAnimated:true completion:nil];
+
+}
 - (IBAction)addPhotos:(id)sender {
-    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
-    }
-    else {
-        NSLog(@"Camera 🚫 available so we will use photo library instead");
+   UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+
+          
+        
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    }
+    
+       imagePickerVC.delegate = self;
+       imagePickerVC.allowsEditing = YES;
+
+       [self presentViewController:imagePickerVC animated:YES completion:nil];
+}
+- (IBAction)useCamera:(id)sender {
+  UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+
+   imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
        imagePickerVC.delegate = self;
        imagePickerVC.allowsEditing = YES;
 
@@ -58,15 +70,18 @@
     // Get the image captured by the UIImagePickerController
     //UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
-    editedImage = [self resizeImage:editedImage withSize:CGSizeMake((1-(editedImage.size.height-400)/editedImage.size.height)*editedImage.size.width, 400)];
+    editedImage = [self resizeImage:editedImage withSize:CGSizeMake((1-(editedImage.size.height-500)/editedImage.size.height)*editedImage.size.width, 500)];
     // Do something with the images (based on your use case)
-    [Post postUserImage:editedImage withCaption:self.captionField.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-        
-    }];
+    [self.previewImage setImage:editedImage];
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (IBAction)postPressed:(id)sender {
+    [Post postUserImage:self.previewImage.image withCaption:self.captionField.text withCompletion:nil];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 #pragma mark - Navigation
 

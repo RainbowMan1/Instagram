@@ -10,7 +10,7 @@
 #import "Post.h"
 
 @implementation Post
-    
+
 @dynamic postID;
 @dynamic userID;
 @dynamic author;
@@ -19,7 +19,6 @@
 @dynamic likeCount;
 @dynamic commentCount;
 @dynamic createdAt;
-@synthesize liked;
 
 + (nonnull NSString *)parseClassName {
     return @"Post";

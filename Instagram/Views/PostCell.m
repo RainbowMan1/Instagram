@@ -9,7 +9,10 @@
 #import "PostCell.h"
 #import "Parse/Parse.h"
 #import "NSDate+DateTools.h"
+@interface PostCell()
+@property (nonatomic) BOOL liked;
 
+@end
 @implementation PostCell
 
 - (void)awakeFromNib {
@@ -28,15 +31,12 @@
     PFQuery *likedbyusers = [relation query];
     [likedbyusers findObjectsInBackgroundWithBlock:^(NSArray * _Nullable users, NSError * _Nullable error) {
         if (users.count>0){
-        for (PFUser * user in users){
-            if ([user.objectId isEqual:[PFUser currentUser].objectId]){
-                self.post.liked=YES;
-            
+            self.post.likeCount = [NSNumber numberWithInteger:users.count];
+            for (PFUser * user in users){
+                if ([user.objectId isEqual:[PFUser currentUser].objectId]){
+                    self.liked=YES;
+                }
             }
-            else{
-                self.post.liked = NO;
-            }
-        }
         }
         [self updateCell];
     }];
@@ -45,7 +45,7 @@
 }
 
 - (IBAction)pressedLike:(id)sender {
-    if (self.post.liked){
+    if (self.liked){
         [self postunlike];
     }
     else{
@@ -56,7 +56,7 @@
 
 - (void)postLike{
     self.post.likeCount= [NSNumber numberWithInt:[self.post.likeCount intValue] + 1];
-    self.post.liked = YES;
+    self.liked = YES;
     PFRelation *relation = [self.post relationForKey:@"likedBy"];
     [relation addObject:[PFUser currentUser]];
     [self.post saveInBackground];
@@ -64,7 +64,7 @@
 }
 - (void)postunlike{
     self.post.likeCount= [NSNumber numberWithInt:[self.post.likeCount intValue] - 1];
-    self.post.liked = NO;
+    self.liked = NO;
     PFRelation *relation = [self.post relationForKey:@"likedBy"];
     [relation removeObject:[PFUser currentUser]];
     [self.post saveInBackground];
@@ -79,7 +79,7 @@
     
     [self.likeButton setTitle:[self.post[@"likeCount"] stringValue] forState:UIControlStateNormal];
     [self.commentButton setTitle:[self.post[@"commentCount"] stringValue] forState:UIControlStateNormal];
-    self.post.liked ? [self.likeButton setImage:[UIImage systemImageNamed:@"heart.fill"] forState:UIControlStateNormal]:[self.likeButton setImage:[UIImage systemImageNamed:@"heart"] forState:UIControlStateNormal];
+    self.liked ? [self.likeButton setImage:[UIImage systemImageNamed:@"heart.fill"] forState:UIControlStateNormal]:[self.likeButton setImage:[UIImage systemImageNamed:@"heart"] forState:UIControlStateNormal];
     [self.postImage loadInBackground:nil progressBlock:nil];
 }
 @end
