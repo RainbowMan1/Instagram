@@ -7,6 +7,7 @@
 //
 
 #import "HomeViewController.h"
+#import "DetailsViewController.h"
 #import "Parse/Parse.h"
 #import "SceneDelegate.h"
 #import "PostCell.h"
@@ -35,16 +36,6 @@ static NSInteger const maxPosts = 20;
     //self.tableView.rowHeight = 300;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 -(void)fetchPosts {
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
     [query orderByDescending:@"createdAt"];
@@ -67,7 +58,7 @@ static NSInteger const maxPosts = 20;
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
     Post *post = self.postArray[indexPath.row];
     [cell setPost:post];
-    NSLog(@"%@", cell.postCaption.text);
+    //NSLog(@"%@", cell.postCaption.text);
     return cell;
 }
 
@@ -100,6 +91,24 @@ static NSInteger const maxPosts = 20;
         [self presentViewController:alert animated:YES completion:^{}];
 }
 
+#pragma mark - Navigation
 
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"detail"]){
+    PostCell *selectedcell = (PostCell*) sender;
+    DetailsViewController *detailsViewController = [segue destinationViewController];
+    detailsViewController.post = selectedcell.post;
+        detailsViewController.startcomment = NO;
+    }
+    else if ([segue.identifier isEqualToString:@"comment"]){
+        UIButton *button = (UIButton*) sender;
+        PostCell *selectedcell = button.superview.superview;
+        DetailsViewController *detailsViewController = [segue destinationViewController];
+        detailsViewController.post = selectedcell.post;
+        detailsViewController.startcomment = YES;
+    }
+    // Pass the selected object to the new view controller.
+}
 
 @end

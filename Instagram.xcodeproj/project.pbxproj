@@ -26,6 +26,7 @@
 		DB635DF424B3DBB800BA3EA9 /* .gitattributes in Resources */ = {isa = PBXBuildFile; fileRef = DB635DF324B3DBB800BA3EA9 /* .gitattributes */; };
 		DB63810E24B79541004DBA33 /* DetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB63810D24B79541004DBA33 /* DetailCell.m */; };
 		DB63811124B79553004DBA33 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB63811024B79553004DBA33 /* CommentCell.m */; };
+		DB63811324B81103004DBA33 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = DB63811224B81103004DBA33 /* Comment.m */; };
 		DB8A2E2324B568BD009C3A7E /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8A2E2224B568BD009C3A7E /* Post.m */; };
 		DB8A2E2724B575E6009C3A7E /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8A2E2624B575E6009C3A7E /* PostCell.m */; };
 		DBA6910024B6762F00D20CDF /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA690FF24B6762F00D20CDF /* DetailsViewController.m */; };
@@ -86,6 +87,8 @@
 		DB63810D24B79541004DBA33 /* DetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailCell.m; sourceTree = "<group>"; };
 		DB63810F24B79553004DBA33 /* CommentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
 		DB63811024B79553004DBA33 /* CommentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
+		DB63811224B81103004DBA33 /* Comment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
+		DB63811424B8110D004DBA33 /* Comment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		DB8A2E2224B568BD009C3A7E /* Post.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 		DB8A2E2424B56902009C3A7E /* Post.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
 		DB8A2E2524B575E6009C3A7E /* PostCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostCell.h; sourceTree = "<group>"; };
@@ -143,6 +146,8 @@
 			children = (
 				DB8A2E2424B56902009C3A7E /* Post.h */,
 				DB8A2E2224B568BD009C3A7E /* Post.m */,
+				DB63811424B8110D004DBA33 /* Comment.h */,
+				DB63811224B81103004DBA33 /* Comment.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -493,6 +498,7 @@
 				DB8A2E2724B575E6009C3A7E /* PostCell.m in Sources */,
 				DB49CB2A24B51F7C0087A535 /* ComposeViewController.m in Sources */,
 				DB49CB2724B51D5B0087A535 /* HomeViewController.m in Sources */,
+				DB63811324B81103004DBA33 /* Comment.m in Sources */,
 				DB63810E24B79541004DBA33 /* DetailCell.m in Sources */,
 				DBA6910024B6762F00D20CDF /* DetailsViewController.m in Sources */,
 				DB635DBF24B3DAC200BA3EA9 /* SceneDelegate.m in Sources */,
