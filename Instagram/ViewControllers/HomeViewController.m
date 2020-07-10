@@ -32,6 +32,8 @@ static NSInteger const maxPosts = 20;
     self.refreshControl =[[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
+    NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+    [self.tableView deselectRowAtIndexPath:selectedIndexPath animated:YES];
     
     //self.tableView.rowHeight = 300;
 }

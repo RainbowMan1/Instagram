@@ -29,8 +29,10 @@
     NSLog(@"%@",self.postCaption.text);
     self.postImage.file = post[@"image"];
     [self.postImage loadInBackground:nil progressBlock:nil];
+    self.commentText.layer.borderWidth =1.0f;
+    self.commentText.layer.cornerRadius = 18;
 }
 - (IBAction)postComment:(id)sender {
-    [Comment postComment:self.commentText.text forPost:self.post withCompletion:nil];
+    [Comment postComment:self.commentText.text forPost:self.post];
 }
 @end

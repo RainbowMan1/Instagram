@@ -23,6 +23,7 @@
     [self.tableView setDelegate:self];
     [self.tableView setDataSource:self];
     [self fetchComments];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     // Do any additional setup after loading the view.
 }
 
