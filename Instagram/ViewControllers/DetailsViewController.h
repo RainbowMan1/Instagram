@@ -12,8 +12,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DetailsViewController : UIViewController
+
 @property (strong, nonatomic) Post *post;
 @property (nonatomic) BOOL startcomment;
+
 @end
 
 NS_ASSUME_NONNULL_END
