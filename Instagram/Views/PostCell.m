@@ -43,7 +43,7 @@
         }
         [self updateCell];
     }];
-        
+    
     [self updateCell];
 }
 
@@ -83,6 +83,7 @@
     [self.likeButton setTitle:[self.post[@"likeCount"] stringValue] forState:UIControlStateNormal];
     [self.commentButton setTitle:[self.post[@"commentCount"] stringValue] forState:UIControlStateNormal];
     self.liked ? [self.likeButton setImage:[UIImage systemImageNamed:@"heart.fill"] forState:UIControlStateNormal]:[self.likeButton setImage:[UIImage systemImageNamed:@"heart"] forState:UIControlStateNormal];
+    
     [self.postImage loadInBackground:nil progressBlock:nil];
 }
 @end

@@ -44,7 +44,6 @@
         [query findObjectsInBackgroundWithBlock:^(NSArray* _Nullable comments, NSError * _Nullable error) {
             if (comments) {
                 self.commentsArray = comments;
-                NSLog(@"%@", self.commentsArray);
                 [self.tableView reloadData];
                 [self.refreshControl endRefreshing];
             }

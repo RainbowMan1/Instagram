@@ -51,7 +51,6 @@ static NSInteger const maxPosts = 20;
                 [self.refreshControl endRefreshing];
                 //SLog(@"%@",posts);
             } else {
-                NSLog(@"%@", error.localizedDescription);
             }
         }];
 }
@@ -60,7 +59,6 @@ static NSInteger const maxPosts = 20;
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
     Post *post = self.postArray[indexPath.row];
     [cell setPost:post];
-    //NSLog(@"%@", cell.postCaption.text);
     return cell;
 }
 

@@ -50,6 +50,7 @@
         
     [self updateCell];
 }
+
 - (IBAction)pressedLike:(id)sender {
     if (self.liked){
         [self postunlike];
@@ -59,8 +60,7 @@
     }
 }
 
-
-- (void)postLike{
+- (void)postLike {
     self.post.likeCount= [NSNumber numberWithInt:[self.post.likeCount intValue] + 1];
     self.liked = YES;
     PFRelation *relation = [self.post relationForKey:@"likedBy"];
@@ -77,7 +77,7 @@
     [self updateCell];
 }
 
-- (void) updateCell{
+- (void) updateCell {
     self.usernameLabel.text = self.post.author.username;
     self.postCaption.text = self.post[@"caption"];
     self.postImage.file = self.post[@"image"];
@@ -88,4 +88,5 @@
     self.liked ? [self.likeButton setImage:[UIImage systemImageNamed:@"heart.fill"] forState:UIControlStateNormal]:[self.likeButton setImage:[UIImage systemImageNamed:@"heart"] forState:UIControlStateNormal];
     [self.postImage loadInBackground:nil progressBlock:nil];
 }
+
 @end

@@ -30,7 +30,6 @@
             if (error != nil) {
                 [self displayError:error.localizedDescription];
             } else {
-                NSLog(@"User logged in successfully");
                 [self performSegueWithIdentifier:@"firstSegue" sender:nil];
                 
                 // display view controller that needs to shown after successful login
@@ -52,7 +51,6 @@
             if (error != nil) {
                 [self displayError:error.localizedDescription];
             } else {
-                NSLog(@"User registered successfully");
                 [self performSegueWithIdentifier:@"firstSegue" sender:nil];
                 
                 // manually segue to logged in view

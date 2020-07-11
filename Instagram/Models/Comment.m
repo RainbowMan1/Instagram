@@ -16,6 +16,7 @@
 + (nonnull NSString *)parseClassName {
     return @"Comment";
 }
+
 + (void) postComment: ( NSString * _Nullable )text forPost:(Post*) post withCompletion: (PFBooleanResultBlock  _Nullable)completion{
     
     Comment *newComment = [Comment new];

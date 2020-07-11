@@ -15,14 +15,11 @@
 @property (nonatomic, strong) NSString * _Nullable postID;
 @property (nonatomic, strong) NSString * _Nullable userID;
 @property (nonatomic, strong) PFUser * _Nullable author;
-
 @property (nonatomic, strong) NSString * _Nullable caption;
 @property (nonatomic, strong) PFFileObject * _Nullable image;
 @property (nonatomic, strong) NSNumber * _Nullable likeCount;
 @property (nonatomic, strong) NSNumber * _Nullable commentCount;
 @property (nonatomic, strong, readonly) NSDate * _Nonnull createdAt;
-
-
 
 + (void) postUserImage: ( UIImage * _Nullable )image withCaption: ( NSString * _Nullable )caption withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
