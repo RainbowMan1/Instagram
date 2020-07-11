@@ -16,18 +16,13 @@
 + (nonnull NSString *)parseClassName {
     return @"Comment";
 }
-+ (void) postComment: ( NSString * _Nullable )text forPost:(Post*) post {
++ (void) postComment: ( NSString * _Nullable )text forPost:(Post*) post withCompletion: (PFBooleanResultBlock  _Nullable)completion{
     
     Comment *newComment = [Comment new];
     newComment.text = text;
     newComment.author = [PFUser currentUser];
     [newComment setValue:post forKeyPath:@"post"];
-    [newComment saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if (succeeded){
-            post.commentCount= [NSNumber numberWithInt:[post.commentCount intValue] + 1];
-            [post saveInBackground];
-        }
-    }];
+    [newComment saveInBackgroundWithBlock:completion];
     
 }
 @end

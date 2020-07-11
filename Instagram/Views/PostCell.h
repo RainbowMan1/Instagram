@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 @property (weak, nonatomic) IBOutlet UIButton *commentButton;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *relativetimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *relativeTimeLabel;
 
 @property (strong, nonatomic) Post *post;
 @end

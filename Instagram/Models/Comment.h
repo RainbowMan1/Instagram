@@ -16,7 +16,7 @@
 @property (nonatomic, strong) NSString * _Nullable text;
 @property (nonatomic, strong) Post * _Nullable post;
 
-+ (void) postComment: ( NSString * _Nullable )text forPost:(Post*_Nullable) post;
++ (void) postComment: ( NSString * _Nullable )text forPost:(Post*_Nullable) post withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
 @end
 #endif /* Comment_h */

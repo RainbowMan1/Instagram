@@ -105,7 +105,7 @@ static NSInteger const maxPosts = 20;
     }
     else if ([segue.identifier isEqualToString:@"comment"]){
         UIButton *button = (UIButton*) sender;
-        PostCell *selectedcell = button.superview.superview;
+        PostCell *selectedcell = button.superview.superview.superview;
         DetailsViewController *detailsViewController = [segue destinationViewController];
         detailsViewController.post = selectedcell.post;
         detailsViewController.startcomment = YES;

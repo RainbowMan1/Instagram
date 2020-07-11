@@ -9,6 +9,14 @@
 #import "DetailCell.h"
 #import "Comment.h"
 #import "Parse/Parse.h"
+#import "NSDate+DateTools.h"
+
+
+@interface DetailCell()
+
+@property (nonatomic) BOOL liked;
+
+@end
 
 @implementation DetailCell
 
@@ -22,17 +30,62 @@
 
     // Configure the view for the selected state
 }
+
 - (void)setPost:(Post *)post {
     _post = post;
-    self.postCaption.text = post[@"caption"];
-    NSLog(@"%@",post[@"caption"]);
-    NSLog(@"%@",self.postCaption.text);
-    self.postImage.file = post[@"image"];
-    [self.postImage loadInBackground:nil progressBlock:nil];
-    self.commentText.layer.borderWidth =1.0f;
-    self.commentText.layer.cornerRadius = 18;
+    
+    PFRelation *relation =[self.post relationForKey:@"likedBy"];
+    PFQuery *likedbyusers = [relation query];
+    [likedbyusers findObjectsInBackgroundWithBlock:^(NSArray * _Nullable users, NSError * _Nullable error) {
+        if (users.count>0){
+            self.post.likeCount = [NSNumber numberWithInteger:users.count];
+            for (PFUser * user in users){
+                if ([user.objectId isEqual:[PFUser currentUser].objectId]){
+                    self.liked=YES;
+                }
+            }
+        }
+        [self updateCell];
+    }];
+        
+    [self updateCell];
 }
-- (IBAction)postComment:(id)sender {
-    [Comment postComment:self.commentText.text forPost:self.post];
+- (IBAction)pressedLike:(id)sender {
+    if (self.liked){
+        [self postunlike];
+    }
+    else{
+        [self postLike];
+    }
+}
+
+
+- (void)postLike{
+    self.post.likeCount= [NSNumber numberWithInt:[self.post.likeCount intValue] + 1];
+    self.liked = YES;
+    PFRelation *relation = [self.post relationForKey:@"likedBy"];
+    [relation addObject:[PFUser currentUser]];
+    [self.post saveInBackground];
+    [self updateCell];
+}
+- (void)postunlike{
+    self.post.likeCount= [NSNumber numberWithInt:[self.post.likeCount intValue] - 1];
+    self.liked = NO;
+    PFRelation *relation = [self.post relationForKey:@"likedBy"];
+    [relation removeObject:[PFUser currentUser]];
+    [self.post saveInBackground];
+    [self updateCell];
+}
+
+- (void) updateCell{
+    self.usernameLabel.text = self.post.author.username;
+    self.postCaption.text = self.post[@"caption"];
+    self.postImage.file = self.post[@"image"];
+    self.relativeTimeLabel.text = [self.post.createdAt shortTimeAgoSinceNow];
+    
+    [self.likeButton setTitle:[self.post[@"likeCount"] stringValue] forState:UIControlStateNormal];
+    [self.commentButton setTitle:[self.post[@"commentCount"] stringValue] forState:UIControlStateNormal];
+    self.liked ? [self.likeButton setImage:[UIImage systemImageNamed:@"heart.fill"] forState:UIControlStateNormal]:[self.likeButton setImage:[UIImage systemImageNamed:@"heart"] forState:UIControlStateNormal];
+    [self.postImage loadInBackground:nil progressBlock:nil];
 }
 @end

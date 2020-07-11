@@ -9,10 +9,13 @@
 #import "PostCell.h"
 #import "Parse/Parse.h"
 #import "NSDate+DateTools.h"
+
 @interface PostCell()
+
 @property (nonatomic) BOOL liked;
 
 @end
+
 @implementation PostCell
 
 - (void)awakeFromNib {
@@ -75,7 +78,7 @@
     self.usernameLabel.text = self.post.author.username;
     self.postCaption.text = self.post[@"caption"];
     self.postImage.file = self.post[@"image"];
-    self.relativetimeLabel.text = [self.post.createdAt shortTimeAgoSinceNow];
+    self.relativeTimeLabel.text = [self.post.createdAt shortTimeAgoSinceNow];
     
     [self.likeButton setTitle:[self.post[@"likeCount"] stringValue] forState:UIControlStateNormal];
     [self.commentButton setTitle:[self.post[@"commentCount"] stringValue] forState:UIControlStateNormal];
